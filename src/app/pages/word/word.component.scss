@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap");
+
+main {
+  background-color: #eee;
+  padding: 50px;
+
+  * {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .word-details {
+    background-color: #fff;
+    max-width: 550px;
+    padding: 40px;
+    width: 100%;
+
+    .word-details__introduction {
+      .word-details__word {
+        font-size: 35px;
+      }
+
+      .word-details-pronunciation {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+
+        .listen-to-pronunciation-button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+
+          svg {
+            width: 25px;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+
+    .word-details-hr {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .word-details__meanings {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .word-details__meaning {
+        .grammatical-class {
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        .word-details__definitions {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding-left: 38px;
+
+          .word-details__definition {
+            .word-details__definition-text {
+            }
+
+            .word-details__examples {
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+              margin-top: 7px;
+
+              .word-details__example {
+                color: #292929;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
