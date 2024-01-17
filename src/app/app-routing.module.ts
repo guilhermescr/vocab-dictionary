@@ -8,12 +8,12 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
-  
-    {
+
+  {
     path: 'word/:id',
     component: WordComponent,
-
   },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
