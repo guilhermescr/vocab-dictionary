@@ -1,10 +1,13 @@
 <main>
-  <section class="word-details">
+  <section class="word-details" *ngIf="wordData$ | async as wordData">
     <header class="word-details__introduction">
-      <h2 class="word-details__word">push</h2>
+      <h2 class="word-details__word">{{ wordData.word }}</h2>
 
       <div class="word-details-pronunciation">
-        <button class="listen-to-pronunciation-button" (click)="playPronunciationAudio()">
+        <button
+          class="listen-to-pronunciation-button"
+          (click)="playPronunciationAudio()"
+        >
           <svg
             fill="#000000"
             viewBox="0 0 1920 1920"
@@ -18,88 +21,34 @@
         </button>
 
         <audio #wordPronunciation>
-          <source src="" type="audio/mp3" />
+          <source src="{{ wordData.pronunciationFile }}" type="audio/mp3" />
         </audio>
 
-        <p class="ipa-pronunciation-text">/pʊʃ/</p>
+        <p class="ipa-pronunciation-text">{{ wordData.pronunciationIpa }}</p>
       </div>
     </header>
 
     <hr class="word-details-hr" />
 
     <section class="word-details__meanings">
-      <article class="word-details__meaning">
-        <h3 class="grammatical-class">verb (used with object)</h3>
+      <article
+        class="word-details__meaning"
+        *ngFor="let meaning of wordData.meanings"
+      >
+        <h3 class="grammatical-class">{{ meaning.grammaticalClass }}</h3>
 
         <ol class="word-details__definitions">
-          <li class="word-details__definition">
+          <li
+            class="word-details__definition"
+            *ngFor="let definition of meaning.definitions"
+          >
             <p class="word-details__definition-text">
-              to press upon or against
+              {{ definition.definition }}
             </p>
 
             <div class="word-details__examples">
               <p class="word-details__example">
-                He pushed the doorbell a few times and heard it ring.
-              </p>
-              <p class="word-details__example">
-                You have to push the door open, not pull it.
-              </p>
-            </div>
-          </li>
-
-          <li class="word-details__definition">
-            <p class="word-details__definition-text">
-              to press upon or against
-            </p>
-
-            <div class="word-details__examples">
-              <p class="word-details__example">
-                He pushed the doorbell a few times and heard it ring.
-              </p>
-              <p class="word-details__example">
-                You have to push the door open, not pull it.
-              </p>
-            </div>
-          </li>
-        </ol>
-      </article>
-
-      <article class="word-details__meaning">
-        <h3 class="grammatical-class">verb (used with object)</h3>
-
-        <ol class="word-details__definitions">
-          <li class="word-details__definition">
-            <p class="word-details__definition-text">
-              to press upon or against
-            </p>
-
-            <div class="word-details__examples">
-              <p class="word-details__example">
-                He pushed the doorbell a few times and heard it ring.
-              </p>
-              <p class="word-details__example">
-                You have to push the door open, not pull it.
-              </p>
-            </div>
-          </li>
-        </ol>
-      </article>
-
-      <article class="word-details__meaning">
-        <h3 class="grammatical-class">verb (used with object)</h3>
-
-        <ol class="word-details__definitions">
-          <li class="word-details__definition">
-            <p class="word-details__definition-text">
-              to press upon or against
-            </p>
-
-            <div class="word-details__examples">
-              <p class="word-details__example">
-                He pushed the doorbell a few times and heard it ring.
-              </p>
-              <p class="word-details__example">
-                You have to push the door open, not pull it.
+                {{ definition.example }}
               </p>
             </div>
           </li>
